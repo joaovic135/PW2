@@ -1,0 +1,10 @@
+{
+    "name": "Notebook samsumg s10",
+    "price": 6000,
+    "tags": ["notebook","devs"],
+    "details":{
+        "processor": "Intel i7",
+        "memory": "8GB",
+        "SSD" : "256gb"
+    }
+}
