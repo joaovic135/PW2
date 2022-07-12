@@ -1,5 +1,5 @@
 import { Usuario,TipoUsuario } from "../models";
-
+import { genSalt , hash } from "bcryptjs";
 
 
 const index = async(req,res)=>{
@@ -19,8 +19,15 @@ const index = async(req,res)=>{
 
 const create = async(req,res)=> {
     try{
-        await Usuario.create(req.body);
-        const usuarios = await Usuario.findOne({where: { email: req.body.email }})
+        const salt = await genSalt(parseInt(process.env.BCRYPTJS_ROUNDS))
+        const senha = await hash(req.body.senha, salt);
+        await Usuario.create({
+            ...req.body,
+            senha: senha
+        });
+        const usuarios = await Usuario.findOne({where: { 
+            email: req.body.email 
+        }})
         res.json(usuarios);
 
     }catch(error){
@@ -29,6 +36,7 @@ const create = async(req,res)=> {
 }
 const read = async(req,res)=> {
     const { id } = req.params;
+    console.log(req.cookies['nome']);
     try{
         const usuario = await Usuario.findByPk(id,{
             include: TipoUsuario
