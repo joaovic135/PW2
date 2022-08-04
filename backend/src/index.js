@@ -3,12 +3,14 @@ import router from "./routes/index";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import { v4 as uuidv4 } from "uuid"; 
+import cors from 'cors';
 
-require ("dotenv").config(path: `${_dirname}/../../.env`)
+require ("dotenv").config({path: `${__dirname}/../../.env`})
 const app = express()
 
-const PORT = process.env.PORT_BACK || 3333
+const PORT =  3333
 
+app.use(cors({credentials:true , origin: "http://localhost:3366"}))
 app.use(express.json())
 app.use(cookieParser())
 
@@ -28,5 +30,5 @@ app.use(router);
 
 
 app.listen(PORT , () => {
-    console.log(`Servior rodando na porta ${PORT}`)
+    console.log(`Servidor rodando na porta ${PORT}`)
 });

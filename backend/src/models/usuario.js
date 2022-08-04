@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.tipoUsuario);
+      this.belongsTo(models.TipoUsuario);
     }
   }
   Usuario.init({

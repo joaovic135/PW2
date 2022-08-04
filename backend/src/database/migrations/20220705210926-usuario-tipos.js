@@ -18,6 +18,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-   await queryInterface.removeConstraint('Usuarios','tipoUsuarioId');
+   await queryInterface.removeConstraint('Usuarios','tipoUsuarioFk');
   }
 };

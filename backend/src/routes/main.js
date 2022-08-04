@@ -1,8 +1,7 @@
 import express from "express"
-import router from ".";
 import mainController from "../controllers/main"
 
-cont router = express.Router();
+const router = express.Router();
 
 router.post("/login", mainController.login);
 router.delete("/logout", mainController.logout);

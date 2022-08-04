@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
 const uplodadProduto = multer({
     storage: storage,
     fileFilter : (req , file , cb) => {
-        if =(File.mimetype === 'image/jpeg' ||
+        if (File.mimetype === 'image/jpeg' ||
         file.mimetype === 'image/jpg' || 
         file.mimetype === 'image/png'){
             cb(null , true);
@@ -30,7 +30,7 @@ const uplodadProduto = multer({
         }
         
     }
-}),
+});
 
 
 
