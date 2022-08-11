@@ -8,7 +8,7 @@ import cors from 'cors';
 require ("dotenv").config({path: `${__dirname}/../../.env`})
 const app = express()
 
-const PORT =  3333
+const PORT = process.env.PORT_BACK || 3333
 
 app.use(cors({credentials:true , origin: "http://localhost:3366"}))
 app.use(express.json())

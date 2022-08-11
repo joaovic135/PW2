@@ -1,38 +1,5 @@
 import {Produto} from "../models";
 
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, '../../public/uploads/')
-    },
-    filename: function (req, file, cb) {
-        const mimeExtension={
-            'image/jpeg' : '.jpeg',
-            'image/jpg' : '.jpg',
-            'image/png' : '.png',
-        }
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        cb(null, file.fieldname + '-' + uniqueSuffix)
-    }
-})
-  
-const uplodadProduto = multer({
-    storage: storage,
-    fileFilter : (req , file , cb) => {
-        if (File.mimetype === 'image/jpeg' ||
-        file.mimetype === 'image/jpg' || 
-        file.mimetype === 'image/png'){
-            cb(null , true);
-        }else{
-            cb(null,false);
-            req.fileError = 'Formato de imagem errado';
-        }
-        
-    }
-});
-
-
 
 const index = async(req,res)=>{
     const page = req.query.page ? parseInt(read.query.page): 1;
@@ -90,4 +57,4 @@ const remove = async (req , res)=> {
 };
 
 
-export default { uplodadProduto, index , create , read , update , remove } 
+export default {  index , create , read , update , remove } 

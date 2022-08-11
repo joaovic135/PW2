@@ -12,6 +12,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      descricao:{
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       preco: {
         type: Sequelize.DECIMAL,
         allowNull: false,

@@ -6,7 +6,7 @@ const router = express.Router()
 
 
 router.get("/",produtoController.index);
-router.post("/",produtoController.uplodadProduto.single('iconeProduto'),produtoController.create);
+router.post("/",produtoController.create);
 router.get("/:id",produtoController.read);
 router.put("/:id",produtoController.update);
 router.delete("/:id",produtoController.remove);

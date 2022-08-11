@@ -24,7 +24,11 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    preco: { 
+    descricao:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    preco:{ 
       type: DataTypes.DECIMAL,
       allowNull: false,
     },

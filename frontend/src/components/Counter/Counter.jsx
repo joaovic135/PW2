@@ -14,9 +14,6 @@ function Counter() {
     },[]);
 
 
-
-
-
     const increment = () => setState({ ...state, counter: state.counter + 1 });
     const decrement = () => setState({ ...state, counter: state.counter - 1 });
 
