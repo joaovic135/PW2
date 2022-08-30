@@ -14,7 +14,7 @@ function ProdutoEdit(){
 
     useEffect(()=>{
         fetch(`http://localhost:3333/produtos/${id}`, {credentials : "include"})
-        .then(resp => resp.json)
+        .then(resp => resp.json())
         .then(json => {
             setNome(json.nome);
             setDescricao(json.descricao);

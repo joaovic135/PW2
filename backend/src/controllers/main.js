@@ -1,15 +1,17 @@
 import { compare } from "bcryptjs";
-import { Usuario } from "../models";
+import { Usuario, TipoUsuario } from "../models";
 
 const login = async (req, res) => {
-    const usuario = await Usuario.findOne({ where: { email: req.body.email } })
+    const usuario = await Usuario.findOne({ where: { email: req.body.email }, include: TipoUsuario })
     if (usuario) {
         const ok = await compare(req.body.senha, usuario.senha);
         if (ok) {
             req.session.uid = usuario.id;
-            res.send({ msg: "Usuario autenticado" });
+            res.send(usuario);
         }
-        else res.send({ msg: "Email e/ou senha incorreta" });
+        else res.status(401).send({ msg: "Email e/ou senha incorreta" });
+    }else{
+        res.status(401).send({ msg: "Email e/ou senha incorreta" });
     }
 
 }
