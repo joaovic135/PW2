@@ -16,7 +16,7 @@ function App() {
     <Provider store = {store}>
     <BrowserRouter>
       <Header/>
-      <div ckassName = "container-fluid mt-2">
+      <div className = "container-fluid mt-2">
         <Routes>
           <Route path="/"  element={<Produtos/>} />
           <Route path="/produto/add"  element={<AddProduto/>} />

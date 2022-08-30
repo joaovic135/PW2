@@ -13,7 +13,13 @@ function Header(){
     const numeUsuario = useSelector((state) => state.user.nome)
     const dispatch = useDispatch();
     const handleLogout = () =>{
-        dispatch(logout())
+        dispatch(logout());
+        fetch(`http://localhost:3333/logout`,{
+            method: "DELETE",
+            credentials: "include",
+        })
+        .then(resp => resp.json())
+        .then(json => console.log(json))
     }        
     return(
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -24,7 +30,7 @@ function Header(){
                         {!logado && <Link className="nav-link" to="/login">
                             Login    
                     </Link>}
-                        {logado && <Link onClick={handleLogout}  className="nav-link"  >
+                        {logado && <Link onClick={handleLogout}  className="nav-link" to = "/" >
                             Logout    
                     </Link>}
                 </div>

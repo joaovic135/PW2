@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen ,faTrash} from '@fortawesome/free-solid-svg-icons'
 import  Modal from "../Modal/Modal";
+import CounterRedux from "../Counter/CounterRedux"
+
 function Produto(){
 
     const[produto,setProduto] = useState({});
@@ -45,6 +47,7 @@ function Produto(){
                 </div>
             </div>
             <p>{produto.descricao}</p>
+            <CounterRedux></CounterRedux>
             <Modal open={modalOpen} onClose={handleModalClose} onConfirm={handleDelete} ></Modal>
         </div>
     )

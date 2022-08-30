@@ -50,7 +50,7 @@ function Login(){
                         {error && <div className= "invalid-feedback">
                             Email ou senha incorreto     
                         </div>}
-                        <button  className = "btn btn-primary mt-2" type="submit">Entrar</button>
+                        <button className = "btn btn-primary mt-2" type="submit">Entrar</button>
                     </form>
 
                 </div>

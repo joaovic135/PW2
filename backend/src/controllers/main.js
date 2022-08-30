@@ -6,6 +6,7 @@ const login = async (req, res) => {
     if (usuario) {
         const ok = await compare(req.body.senha, usuario.senha);
         if (ok) {
+            req.session.TipoUsuario = usuario.TipoUsuario.rotulo;
             req.session.uid = usuario.id;
             res.send(usuario);
         }
@@ -17,7 +18,7 @@ const login = async (req, res) => {
 }
 const logout = async (req, res) => {
     req.session.destroy((err) => {
-        if (!err) res.sen({ msg: "Usuario delogado com sucesso" });
+        if (!err) res.send({ msg: "Usuario delogado com sucesso" });
     });
 }
 
