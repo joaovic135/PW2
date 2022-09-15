@@ -22,7 +22,6 @@ function Counter() {
         <div style={{ display: "flex" }}>
             <button onClick={() => dispatch({type: 'decrement'})} className = "btn btn-primary mx-1">&minus;</button>
             <h2>{state.counter}</h2>
-            <button onClick={increment} className = "btn btn-primary mx-1">+</button>
             <button onClick={() => dispatch({type: 'incremente'})} className = "btn btn-primary mx-1">+</button>
         </div>
     );

@@ -15,12 +15,22 @@ const index = async(req,res)=>{
     }
 }
 
+const file = async(req, res)=> {
+    try{
+        const {originalname: file , filename: path} = req.file;
+        res.json({file,path})
+    }catch(error){
+        res.status(500).json(error);
+    }
+}
 
 const create = async ( req, res)=> {
     try{
-        await Produto.create(req.body);
-        const produtos = await Produto.findOne({where:{id : req.body.nome}})
-        res.json(produtos);
+        const produto = await Produto.create({
+            ...req.body,
+        });
+        console.log(req.body);
+        res.json(produto);
     }catch(error){
         res.status(500).json(error);
     }
@@ -41,7 +51,7 @@ const update = async ( req ,res)=> {
     try{
         await Produto.update(req.body,{where:{ id }})
         const produtos = await Produto.findByPk(id,);
-        res.json(usuario);
+        res.json(produtos);
     }catch(error){
         res.status(500).json(error);
     }
@@ -57,4 +67,4 @@ const remove = async (req , res)=> {
 };
 
 
-export default {  index , create , read , update , remove } 
+export default {  index ,file, create , read , update , remove } 

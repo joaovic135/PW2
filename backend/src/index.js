@@ -4,6 +4,8 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import { v4 as uuidv4 } from "uuid"; 
 import cors from 'cors';
+const serveIndex = require('serve-index');
+
 
 require ("dotenv").config({path: `${__dirname}/../../.env`})
 const app = express()
@@ -13,6 +15,11 @@ const PORT = process.env.PORT_BACK || 3333
 app.use(cors({credentials:true , origin: "http://localhost:3366"}))
 app.use(express.json())
 app.use(cookieParser())
+
+app.use(express.static('public'));
+app.use('/uploads', express.static('public/uploads'), 
+serveIndex('public/uploads', { 'icons': true }))
+
 
 app.use(session({
     genid: () => uuidv4(),

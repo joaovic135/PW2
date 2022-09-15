@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen ,faTrash} from '@fortawesome/free-solid-svg-icons'
 import  Modal from "../Modal/Modal";
-import CounterRedux from "../Counter/CounterRedux"
+import CounterRedux from "../Counter/CounterReducer"
 
 function Produto(){
 
@@ -35,7 +35,10 @@ function Produto(){
 
     return(
         <div>
-            <div className="d-flex justify-content-between">
+            <div style={{ display: "flex" }}>
+                    <img src= {`http://localhost:3333/uploads/${produto.path}`} alt= "string" height={200} width={200}  />
+            </div>
+            <div className="d-flex justify-content-between" >
                 <h3>{produto.nome}</h3>
                 <div>
                     <button onClick={()=> navigate(`/produto/${produto.id}/edit`)}> 

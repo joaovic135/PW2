@@ -16,6 +16,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      file:{
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      path:{
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       preco: {
         type: Sequelize.DECIMAL,
         allowNull: false,

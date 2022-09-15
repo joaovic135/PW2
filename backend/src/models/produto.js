@@ -28,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    file:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    path:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     preco:{ 
       type: DataTypes.DECIMAL,
       allowNull: false,

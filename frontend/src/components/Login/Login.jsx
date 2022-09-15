@@ -46,7 +46,7 @@ function Login(){
                         <label htmlFor="email">Email </label>
                         <input className = {`form-control ${error ==='' ? '' : 'is-invalid'}`} value = { email } onChange = {(e) => setEmail(e.target.value)} type="text" />
                         <label htmlFor="email">Senha </label>
-                        <input className = {`form-control ${error ==='' ? '' : 'is-invalid'}`} value = { senha } onChange = {(e) => setSenha(e.target.value)} type="text" />
+                        <input className = {`form-control ${error ==='' ? '' : 'is-invalid'}`} value = { senha } onChange = {(e) => setSenha(e.target.value)} type="password" />
                         {error && <div className= "invalid-feedback">
                             Email ou senha incorreto     
                         </div>}

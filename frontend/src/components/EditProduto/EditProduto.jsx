@@ -23,7 +23,6 @@ function ProdutoEdit(){
             console.log(json);
         })
     },[]);
-
     const handleSubmit = (e) => {
         const produto = {nome,descricao,preco,estoque}
         e.preventDefault()
@@ -43,7 +42,7 @@ function ProdutoEdit(){
                     }
                 });
             }else{
-                navigate(`/produto/${json.id}`)
+                //navigate(`/produto/${json.id}`)
             }
         })
     }
