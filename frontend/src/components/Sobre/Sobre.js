@@ -1,7 +1,9 @@
 function Sobre(){
     return(
         <div>
-            <h3>Sobre a minha Loja.</h3>
+            <h3>Loja virtual para a disciplina de programção web 2.</h3>
+            <h2>Aluno: João victor brandao de abreu</h2>
+            
         </div>
     )
 }
