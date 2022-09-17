@@ -8,7 +8,8 @@ import {LimparCarrinho} from "../redux/slices/carrinhoSlices";
 function Carrinho(){
 
     const dispatch = useDispatch();
-
+    const logado = useSelector((state) => state.user.logado)
+    
     const carrinho =  useSelector(state => state.carrinho)
     const handleApaguarCarrinho = () =>{
         dispatch(LimparCarrinho());
