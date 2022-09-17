@@ -6,6 +6,7 @@ import Produto from "./components/Produto/Produto";
 import ProdutoEdit from "./components/EditProduto/EditProduto";
 import Login from "./components/Login/Login";
 import Carrinho from "./components/Carrinho/Carrinho";
+import SignUp from "./components/SignUp/SignUp";
 import { BrowserRouter, Route ,Routes} from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./components/redux/store"
@@ -26,6 +27,7 @@ function App() {
           <Route path="/sobre" element={<Sobre/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/carrinho" element={<Carrinho/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
         </Routes>
       </div>
     </BrowserRouter>
