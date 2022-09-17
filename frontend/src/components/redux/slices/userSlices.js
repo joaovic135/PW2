@@ -14,11 +14,13 @@ const userSlice = createSlice({
     initialState: initialState,
     reducers: {
         login: (state, action) =>{
+            console.log(action.payload.TipoUsuario.rotulo)
             return {
                 nome: action.payload.nome,
                 email: action.payload.email,
                 logado : true,
-                tipoUsuario : action.payload.rotulo
+                tipoUsuario : action.payload.TipoUsuario.rotulo
+
             }
         },
         logout:(state) => initialState

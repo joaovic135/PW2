@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 function ProdutoEdit(){
 
     const {id} = useParams();
+    const [image, setImage] = useState({ preview: '', data: '' })
     const [nome,setNome] = useState('')
     const [descricao,setDescricao] = useState('')
     const [preco,setPreco] = useState(0)
@@ -26,31 +27,51 @@ function ProdutoEdit(){
     const handleSubmit = (e) => {
         const produto = {nome,descricao,preco,estoque}
         e.preventDefault()
-        fetch("http://localhost:3333/produtos",{
-            method:"POST",
-            credentials:'include',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify(produto)
+
+        e.preventDefault()
+        let formData = new FormData()
+        formData.append('file', image.data)
+        fetch("http://localhost:3333/produtos/file", {
+            method: "POST",
+            credentials: 'include',
+            body: formData
         })
         .then(resp => resp.json())
-        .then (json => {
-            setIsPending(false);
-            if(json.errors){
-                json.errors.forEach(error => {
-                    if(error.path === 'nome'){
-                        setNomeErro(error.message)
+        .then(resp => {
+            const { file,path } = resp
+            fetch(`http://localhost:3333/produtos/${id}`,{
+                method:"PUT",
+                credentials:'include',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({ ...produto, file,path })
+            })
+                .then(resp => resp.json())
+                .then (json => {
+                    setIsPending(false);
+                    if(json.errors){
+                        json.errors.forEach(error => {
+                            if(error.path === 'nome'){
+                                setNomeErro(error.message)
+                            }
+                        });
+                    }else{
+                        navigate(`/produto/${json.id}`)
                     }
-                });
-            }else{
-                //navigate(`/produto/${json.id}`)
-            }
+            })
         })
     }
-
+    const handleFileChange = (e) => {
+        const img = {
+            preview: URL.createObjectURL(e.target.files[0]),
+            data: e.target.files[0],
+        }
+        setImage(img)
+    }
     return(
         <div>
-            <h3>Adição de produto</h3>
+            <h3>Edição de produto</h3>
             <form onSubmit={handleSubmit}>
+            <input type='file' name='file' onChange={handleFileChange}></input>
                 <label htmlFor="nome">Nome</label>
                 <input 
                     type="text" 

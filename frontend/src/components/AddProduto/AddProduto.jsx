@@ -22,13 +22,10 @@ function AddProduto() {
             method: "POST",
             credentials: 'include',
             body: formData
-        })
-            
+        })      
             .then(resp => resp.json())
             .then(resp => {
                 const { file,path } = resp
-
-
                 fetch("http://localhost:3333/produtos", {
                     method: "POST",
                     credentials: 'include',
@@ -47,7 +44,7 @@ function AddProduto() {
                             });
                         } else {
                             console.log(json)
-                           //navigate(`/produto/${json.id}`)
+                            navigate(`/produto/${json.id}`)
                         }
                     })
                     .catch(resp => console.log(resp))

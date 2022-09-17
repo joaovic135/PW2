@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 
-const initialState = {
-    produtos: []
+const initialState ={
+    produtos: [],
 }
 
 const produtosSlice = createSlice ({
@@ -13,13 +13,13 @@ const produtosSlice = createSlice ({
             state.produtos[action.payload] = 0
         },
         increment:(state,action) => {
-            state.produtos[action.payload] = produtos[action.payload] + 1
+            state.produtos[action.payload] = state.produtos[action.payload] + 1
         },
         decrement:(state,action) => {
             if( state.produtos[action.payload] > 0 ){
-                state.produtos[action.payload] = produtos[action.payload] - 1
+                state.produtos[action.payload] = state.produtos[action.payload] - 1
             }else{
-                state.produtos[action.payload] = produtos[action.payload] - 1
+                state.produtos[action.payload] = 0
             }
         }
     }  

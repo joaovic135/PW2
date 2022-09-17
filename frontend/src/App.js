@@ -5,6 +5,7 @@ import AddProduto from "./components/AddProduto/AddProduto";
 import Produto from "./components/Produto/Produto";
 import ProdutoEdit from "./components/EditProduto/EditProduto";
 import Login from "./components/Login/Login";
+import Carrinho from "./components/Carrinho/Carrinho";
 import { BrowserRouter, Route ,Routes} from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./components/redux/store"
@@ -24,6 +25,7 @@ function App() {
           <Route path="/produto/:id"  element={<Produto/>} />
           <Route path="/sobre" element={<Sobre/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/carrinho" element={<Carrinho/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/slices/userSlices"
 import {useNavigate} from "react-router-dom";
+import {LimparCarrinho} from "../redux/slices/carrinhoSlices";
 
 function Login(){
 
@@ -29,7 +30,7 @@ function Login(){
         })
         .then(json => {
             console.log(json)
-            dispatch(login(json))
+            dispatch(login(json)) 
             navigate("/")
         })
     }

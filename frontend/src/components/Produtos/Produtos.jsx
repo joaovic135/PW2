@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import {useNavigate, Link} from "react-router-dom"
+import { useSelector , useDispatch } from "react-redux";
 function Produtos(){
     
 
@@ -9,7 +10,7 @@ function Produtos(){
     const [searchString , setSearchString] = useState("");
     const [searchProdutos , setSearchProdutos ] = useState([]);
     const navigate = useNavigate();
-
+    const TipoUsuario =useSelector(state=> state.user.tipoUsuario)
     useEffect(() =>{
         fetch("http://localhost:3333/produtos" ,{credentials:"include" } )
         .then(result => result.json())
@@ -27,6 +28,7 @@ function Produtos(){
         <div>
             <div>
                 <h3 className="float-start">Listagem de Produtos</h3>
+                { TipoUsuario === 'colaborador' &&
                 <div className="float-start">
                     <button
                     onClick={()=>{
@@ -34,7 +36,8 @@ function Produtos(){
                     }} 
                     className="btn btn-primary"
                     >Criar</button>
-                </div>
+                </div>}
+                
             </div>
 
             <input onChange={(e)=> setSearchString(e.target.value)} className="form-control mb-3" type ="text" value = {searchString}/>
